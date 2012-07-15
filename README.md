@@ -1,11 +1,11 @@
 # PHP I18n #
 
-by Tom Rochette
-<roctom@gmail.com>  
+by Tom Rochette 
+<roctom@gmail.com>
 <http://www.jolteon.net/projects/php-i18n>
 
 Optimizalization, actualization, localization and pluralization by Koen Punt
-<koen@koen.pt>
+<me@koen.pt>
 <http://www.koen.pt>
 
 ## Introduction ##
@@ -24,7 +24,7 @@ Ruby/Rails programming conventions have been maintained as much as possible. Dev
 ## Minimum Requirements ##
 
 * PHP 5.3+
-* Symfony PEAR Yaml Parser
+* PECL yaml or Symfony PEAR Yaml Parser
 
 ## Installation ##
 
