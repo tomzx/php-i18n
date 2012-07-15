@@ -1,12 +1,12 @@
 # PHP I18n #
 
-by Tom Rochette 
-<roctom@gmail.com>
+by Tom Rochette  
+<roctom@gmail.com>  
 <http://www.jolteon.net/projects/php-i18n>
 
-Optimizalization, actualization, localization and pluralization by Koen Punt
-<me@koen.pt>
-<http://www.koen.pt>
+Optimizalization, actualization, localization and pluralization by Koen Punt  
+<me@koen.pt>  
+<http://www.koen.pt>  
 
 ## Introduction ##
 A brief summarization of what I18n is:
