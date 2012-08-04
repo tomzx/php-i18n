@@ -401,8 +401,8 @@ class I18n
 			}
 		}
 	}
-
-	private static function normalize_key($key, $separator){
+	# private
+	public static function normalize_key($key, $separator){
 		if(self::normalized_key_cache($separator, $key) === false){
 			switch(true){
 				case is_array($key):
