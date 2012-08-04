@@ -204,7 +204,8 @@ class Base extends Transliterator{
 	# data to the existing translations. Raises I18n::UnknownFileType
 	# for all other file extensions.
 	protected function load_file($filename){
-		$type = strtolower(end(explode('.', $filename)));
+		$filename_splitted = explode('.', $filename);
+		$type = strtolower(end($filename_splitted));
 		$method_name = "load_{$type}";
 		if (!method_exists($this, $method_name)) {
 			throw new UnknownFileType($type, $filename);

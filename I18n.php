@@ -394,7 +394,7 @@ class I18n
 			default:
 				$handler = Helpers\get($options, 'exception_handler') ?: self::config()->exception_handler;
 				switch(true){
-					case $handler instanceof Symbol:
+					case (!is_string($handler) && !is_array($handler) && is_callable($handler)):
 						return call_user_func($handler, $exception, $locale, $key, $options);
 					default:
 						return $handler->call($exception, $locale, $key, $options);
@@ -403,11 +403,11 @@ class I18n
 	}
 
 	private static function normalize_key($key, $separator){
-		#if(self::normalized_key_cache($separator, $key) === false){
+		if(self::normalized_key_cache($separator, $key) === false){
 			switch(true){
 				case is_array($key):
 					$keys = Helpers\array_flatten(array_map(function($k) use ($separator){
-						return self::normalize_key($k, $separator);
+						return I18n::normalize_key($k, $separator);
 					}, $key));
 				break;
 				default:
@@ -415,14 +415,17 @@ class I18n
 					$keys = array_filter($keys); # keys.delete('')
 					$keys = array_map('\I18n\Helpers\to_sym', $keys);
 			}
+			self::normalized_key_cache($separator, $key, $keys);
 			return $keys;
-		#}
-		#return self::normalized_key_cache($separator, $key);
+		}
+		return self::normalized_key_cache($separator, $key);
 	}
 
 	private static function normalized_key_cache($separator, $key, $value = null){
+		$key = is_array($key) ? implode('.', $key) : (string)$key;
 		if(is_null($value)){
-			if(array_key_exists($separator, self::$normalized_key_cache) && array_key_exists((string)$key, self::$normalized_key_cache[$separator])){
+			if(array_key_exists($separator, self::$normalized_key_cache) 
+			&& array_key_exists((string)$key, self::$normalized_key_cache[$separator])){
 				return self::$normalized_key_cache[$separator][(string)$key];
 			}
 			return false;
