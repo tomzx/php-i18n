@@ -35,7 +35,7 @@ class I18n
 	
 	public static function config($value = null){
 		#Thread.current[:i18n_config] ||= I18n::Config.new
-		self::$i18n_config = $value ?: self::$i18n_config ?: new \I18n\Config();
+		self::$i18n_config = ( $value ?: ( self::$i18n_config ?: new \I18n\Config() ) );
 		return self::$i18n_config;
 	}
 
