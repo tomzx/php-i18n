@@ -10,7 +10,12 @@ class Symbol
 	{
 		$this->set_value($value);
 	}
-
+	
+	public function __toString()
+	{
+		return (string)$this->get_value();
+	}
+	
 	public function get_value()
 	{
 		return $this->value;
@@ -23,12 +28,4 @@ class Symbol
 		}
 		$this->value = $value;
 	}
-
-	public function __toString()
-	{
-		return $this->value;
-	}
 }
-
-
-?>
